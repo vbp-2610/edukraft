@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {
   Menu, X, Stethoscope, Cpu, FileCheck2, Phone, Mail, MapPin,
-  GraduationCap, CheckCircle2, BadgeCheck, ChevronDown,
+  GraduationCap, CheckCircle2, BadgeCheck, ChevronDown, ArrowUpRight, Star,
 } from "lucide-react";
 
 const NAV = [
@@ -38,6 +38,25 @@ const CARDS = [
     text: "One package covers the whole process, from the first document check to your seat confirmation.",
     points: ["End-to-end documentation", "Counseling assistance", "Certificate verification"],
   },
+];
+
+const STATS = [
+  { value: "65000+", label: "Students Enrolled" },
+  { value: "15000+", label: "Enrollments Till Date" },
+  { value: "45000+", label: "Applications in 2025" },
+  { value: "#1", label: "Ranked in South India" },
+  { value: "#2", label: "Ranked in India" },
+  { value: "32+", label: "Turn-key Projects" },
+  { value: "350+", label: "Associated Institutions" },
+  { value: "250+", label: "Dedicated Counselors" },
+  { value: "7", label: "Regional Offices" },
+  { value: "2", label: "International Offices" },
+];
+
+const REVIEWS = [
+  { brand: "G", label: "2,350+ Reviews", rating: "4.8 Rating", tone: "google" },
+  { brand: "f", label: "25+ Reviews", rating: "4.5 Rating", tone: "facebook" },
+  { brand: "Jd", label: "2,678+ Reviews", rating: "4.7 Rating", tone: "jd" },
 ];
 
 export default function App() {
@@ -198,6 +217,40 @@ export default function App() {
                 <button type="submit" className="btn btn-gold btn-lg">Request Call Back</button>
               </form>
             )}
+          </div>
+        </section>
+
+        <section className="trust">
+          <div className="wrap trust-inner">
+            <h2>Leading EdTech for Student Enrollment Since 2008</h2>
+            <p>
+              Trusted by Students, Parents, and Institutions for Expert Career Guidance and Transparent Admissions across Pan India.
+            </p>
+
+            <div className="stats-grid">
+              {STATS.map((stat) => (
+                <div key={stat.label} className="stat-card">
+                  <span className="stat-arrow"><ArrowUpRight size={18} /></span>
+                  <div className="stat-value">{stat.value}</div>
+                  <div className="stat-label">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="reviews-row">
+              {REVIEWS.map((review) => (
+                <div key={review.brand} className={`review-pill ${review.tone}`}>
+                  <span className="review-brand">{review.brand}</span>
+                  <span className="review-copy">{review.label}</span>
+                  <span className="review-stars" aria-label={`${review.rating}`}>
+                    {[...Array(5)].map((_, index) => (
+                      <Star key={index} size={12} fill="currentColor" />
+                    ))}
+                  </span>
+                  <span className="review-rating">{review.rating}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </main>

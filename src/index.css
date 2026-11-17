@@ -85,6 +85,130 @@ ul { list-style: none; }
 .form.success svg { color: #1f8a5b; }
 .form.success p { color: var(--muted); }
 
+.trust {
+  position: relative;
+  overflow: hidden;
+  padding: 72px 0 70px;
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 55%),
+    linear-gradient(180deg, #0d1d4c 0%, #101f52 100%);
+}
+.trust::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.08), transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.04), transparent 65%);
+  opacity: .7;
+}
+.trust-inner { position: relative; z-index: 1; }
+.trust h2 {
+  text-align: center;
+  color: var(--white);
+  font-size: clamp(2.1rem, 3vw, 3.4rem);
+  margin-bottom: 14px;
+  letter-spacing: -.04em;
+}
+.trust p {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  color: rgba(255,255,255,0.8);
+  font-size: 1.05rem;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(170px, 1fr));
+  gap: 18px;
+  margin-top: 40px;
+}
+.stat-card {
+  position: relative;
+  background: rgba(255,255,255,0.96);
+  border-radius: 14px;
+  padding: 24px 16px 18px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(9,20,45,0.22);
+}
+.stat-value {
+  font-size: clamp(2rem, 2.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--navy-deep);
+}
+.stat-label {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+.stat-arrow {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(31, 138, 91, 0.12);
+  color: #1f8a5b;
+}
+.reviews-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 42px;
+}
+.review-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 260px;
+  padding: 14px 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.96);
+  color: var(--navy-deep);
+  box-shadow: 0 8px 22px rgba(9,20,45,0.16);
+  font-weight: 700;
+}
+.review-brand {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  font-weight: 800;
+  background: #f2f7ff;
+}
+.review-copy {
+  font-size: .98rem;
+  color: var(--navy-deep);
+}
+.review-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: #f4b400;
+}
+.review-rating {
+  color: var(--muted);
+  font-size: .92rem;
+  font-weight: 700;
+}
+.review-pill.google .review-brand { background: linear-gradient(135deg, #4285f4 0%, #34a853 100%); color: #fff; }
+.review-pill.facebook .review-brand { background: #1877f2; color: #fff; }
+.review-pill.jd .review-brand { background: #f5f5f5; color: #c32b2b; }
+
 /* Footer */
 .footer { background: var(--navy-deep); color: #aebbd2; padding: 40px 0 0; border-top: 1px solid rgba(255,255,255,.1); }
 .footer-grid { display: flex; justify-content: space-between; gap: 28px; flex-wrap: wrap; }
@@ -95,6 +219,9 @@ ul { list-style: none; }
 .copy { margin-top: 32px; padding: 18px 20px; text-align: center; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.1); }
 
 /* Responsive */
+@media (max-width: 1100px) {
+  .stats-grid { grid-template-columns: repeat(3, minmax(170px, 1fr)); }
+}
 @media (max-width: 900px) {
   .cards { grid-template-columns: 1fr; margin-top: -60px; }
   .contact-grid { grid-template-columns: 1fr; gap: 28px; }
@@ -107,6 +234,13 @@ ul { list-style: none; }
   .nav a:not(.btn) { padding: 14px 8px; border-bottom: 1px solid var(--line); border-radius: 0; }
   .nav-cta-mobile { display: inline-flex; margin-top: 14px; }
   .hero { padding: 56px 0 110px; }
+  .stats-grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
+  .review-pill { min-width: 220px; }
+}
+@media (max-width: 560px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .trust { padding-top: 60px; }
+  .review-pill { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
